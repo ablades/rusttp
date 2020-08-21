@@ -154,3 +154,82 @@ fn plus_one(x: i32) -> i32 {
 }
 
 ```
+
+## Control Flow
+
+```rust
+//Match may be a good alternative for lots of else if statements
+fn main() {
+    let number = 6;
+
+    if number % 4 == 0 {
+        println!("number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if number % 2 == 0 {
+        println!("number is divisible by 2");
+    } else {
+        println!("number is not divisible by 4, 3, or 2");
+    }
+}
+
+// if in variable assignment
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+
+
+
+    fn main() {
+        let mut counter = 0;
+        //variable assignment  of a loop. value is assigned to result on break
+        let result = loop {
+            counter += 1;
+
+            if counter == 10 {
+                break counter * 2;
+            }
+    };
+
+    println!("The result is {}", result);
+
+    //While Loops
+    while number != 0 {
+        println!("{}!", number);
+
+        number -= 1;
+    }
+
+    //for loops
+    fn main() {
+        let a = [10, 20, 30, 40, 50];
+
+        for element in a.iter() {
+            println!("the value is: {}", element);
+        }
+    }   
+
+    fn main() {
+        //typical way to do a while loop in rust rev reverses the range
+        for number in (1..4).rev() {
+            println!("{}!", number);
+        }
+        println!("LIFTOFF!!!");
+    }
+}
+```
+
+## Ownership
+
+Rust language behaves differently differently based on wheter or not a value is on the stack or allocated onto the heap.
+
+Stack - stores values, must have a known, fixed size. Pushing to stack fast
+
+Heap - data in unkown size or size that may change should be on the heap. Searches for location, returns pointer. Allocating to heap slower.
+
+String:: is allocated on heap, literals are not since by default they are immutable.
+
+### Ownership Rules
+
+- Each value in Rust has a variable called its owner.
+- Can only have one owner at a time.
+- When owner is out of scope, values are dropped.

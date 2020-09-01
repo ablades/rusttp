@@ -216,6 +216,7 @@ fn main() {
         println!("LIFTOFF!!!");
     }
 }
+
 ```
 
 ## Ownership
@@ -233,3 +234,4 @@ String:: is allocated on heap, literals are not since by default they are immuta
 - Each value in Rust has a variable called its owner.
 - Can only have one owner at a time.
 - When owner is out of scope, values are dropped.
+

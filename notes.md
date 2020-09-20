@@ -236,4 +236,28 @@ String:: is allocated on heap, literals are not since by default they are immuta
 - Each value in Rust has a variable called its owner.
 - Can only have one owner at a time.
 - When owner is out of scope, values are dropped.
+- Reassignment is a "move" can no longer use previous variable for anything stored on the heap ex:  s1 = "hello"   s2 = s1     s1 is no longer valid
+- clone() creates a deep copy
 
+- Reassignment works normally for anything that has a fix size and is stored on the stack
+
+```rust
+fn main() {
+    let s = String::from("hello");  // s comes into scope
+
+    takes_ownership(s);             // s's value moves into the function...
+                                    // ... and so is no longer valid here
+
+    let x = 5;                      // x comes into scope
+
+    makes_copy(x);                  // x would move into the function,
+                                    // but i32 is Copy, so it’s okay to still
+                                    // use x afterward
+
+} // Here, x goes out of scope, then s. But because s's value was moved, nothing
+  // special happens.
+```
+
+ - ownership is at the level of whatever scope it goes into 
+
+** The ownership of a variable follows the same pattern every time: assigning a value to another variable moves it. When a variable that includes data on the heap goes out of scope, the value will be cleaned up by drop unless the data has been moved to be owned by another variable.

@@ -261,3 +261,46 @@ fn main() {
  - ownership is at the level of whatever scope it goes into 
 
 ** The ownership of a variable follows the same pattern every time: assigning a value to another variable moves it. When a variable that includes data on the heap goes out of scope, the value will be cleaned up by drop unless the data has been moved to be owned by another variable.
+
+## References and Borrowing
+
+references allow you to refer to a value without taking ownership - &
+
+references(borrowed values) are not mutable by default      change(&mut s); allows s to be mutated inside the function change
+
+At any given time, you can have either one mutable reference or any number of immutable references.
+References must always be valid.
+
+We can create slices using a range within brackets by specifying [starting_index..ending_index], where starting_index is the first position in the slice and ending_index is one more than the last position in the slice
+
+## Structs
+
+
+```rust
+    struct User {
+        username: String,
+        email: String,
+        sign_in_count: u64,
+        active: bool,
+    }
+
+    //let mut user1 = User {}
+    let user1 = User {
+        email: String::from("someone@example.com"),
+        username: String::from("someusername123"),
+        active: true,
+        sign_in_count: 1,
+    };
+
+
+    user1.email
+
+
+    //struct update syntax, we can achieve the same effect with less code, as shown in Listing 5-7. The syntax .. specifies that the remaining fields not explicitly set should have the same value as the fields in the given instance.
+
+     let user2 = User {
+        email: String::from("another@example.com"),
+        username: String::from("anotherusername567"),
+        ..user1
+    };
+```

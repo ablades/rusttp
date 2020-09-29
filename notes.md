@@ -303,4 +303,128 @@ We can create slices using a range within brackets by specifying [starting_index
         username: String::from("anotherusername567"),
         ..user1
     };
+
+    fn main() {
+        struct Color(i32, i32, i32);
+        struct Point(i32, i32, i32);
+
+        let black = Color(0, 0, 0);
+        let origin = Point(0, 0, 0);
+    }
+
+
+
+```
+
+## Methods
+Defined within the context of a struct, enum or trait.
+
+Rust has automatic referencing and dereferencing
+
+## Enums 
+
+enum values can only be one of its variants. 
+
+```rust
+enum IpAddrKind {
+    V4,
+    V6,
+}
+
+let four = IpAddrKind::V4;
+let six = IpAddrKind::V6;
+
+enum IpAddrKind {
+        V4,
+        V6,
+    }
+
+// struct using an enum
+struct IpAddr {
+    kind: IpAddrKind,
+    address: String,
+}
+
+// consise enum representation
+enum IpAddr {
+        V4(String),
+        V6(String),
+    }
+    //consise
+    let home = IpAddr::V4(String::from("127.0.0.1"));
+    //consise
+    let loopback = IpAddr::V6(String::from("::1"));
+
+//verbose struct rep 
+let home = IpAddr {
+    kind: IpAddrKind::V4,
+    address: String::from("127.0.0.1"),
+};
+//verbose struct rep
+let loopback = IpAddr {
+    kind: IpAddrKind::V6,
+    address: String::from("::1"),
+};
+```
+
+## Option Enum
+ ```rust 
+enum Option<T> {
+    Some(T),
+    None,
+}
+
+
+// Match with option enum used when need to handle Nulls
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => None,
+        Some(i) => Some(i + 1),
+    }
+}
+
+let five = Some(5);
+let six = plus_one(five);
+let none = plus_one(None);
+``` 
+
+## Match Control Flow
+```rust
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+//Similar to a switch statement
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+    //Example of match statement with multiple expressions
+    match coin {
+        Coin::Penny => {
+            println!("Lucky penny!");
+            1
+        }
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+
+
+let some_u8_value = 0u8;
+match some_u8_value {
+    1 => println!("one"),
+    3 => println!("three"),
+    5 => println!("five"),
+    7 => println!("seven"),
+    _ => (), // Do nothing with the rest of the values in the 0-255 spectrum of u8
+}
+
 ```

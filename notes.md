@@ -445,3 +445,40 @@ Paths: A way of naming an item, such as a struct, function, or module
 use works like import path
 
 as - creates an alias for an import
+
+
+## Collections
+
+- Vector - dynamic array
+```rust
+let v: Vec<i32> = Vec::new();
+let v = vec![1, 2, 3];
+v.push(5);
+v.push(6);
+```
+
+- String
+```rust
+// For string combining
+ let s = format!("{}-{}-{}", s1, s2, s3);
+```
+- Hash Map
+
+
+## Error Handling
+```rust
+// Cleans stack and aborts program
+panic!("")
+
+// Handling Errors
+use std::fs::File;
+
+fn main() {
+    let f = File::open("hello.txt");
+
+    let f = match f {
+        Ok(file) => file,
+        Err(error) => panic!("Problem opening the file: {:?}", error),
+    };
+}
+```

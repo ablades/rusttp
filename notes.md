@@ -427,4 +427,21 @@ match some_u8_value {
     _ => (), // Do nothing with the rest of the values in the 0-255 spectrum of u8
 }
 
+
+//The if let syntax lets you combine if and let into a less verbose way to handle values that match one pattern while ignoring the rest.
+if let Some(3) = some_u8_value {
+        println!("three");
+    }
+
 ```
+
+## Managing Projects 
+
+Packages: A Cargo feature that lets you build, test, and share crates
+Crates: A tree of modules that produces a library or executable
+Modules and use: Let you control the organization, scope, and privacy of paths
+Paths: A way of naming an item, such as a struct, function, or module
+
+use works like import path
+
+as - creates an alias for an import
